@@ -1,0 +1,144 @@
+@import "tailwindcss";
+
+@custom-variant light-theme (.light-theme &);
+
+@layer base {
+  :root {
+    --bg-main: #030712;
+    --text-primary: #f8fafc;
+    --text-secondary: #94a3b8;
+  }
+}
+
+/* ==========================================================================
+   DARK THEME (Default Aesthetic - Glowing Slate & Cyberpunk Emerald/Cyan)
+   ========================================================================== */
+body.dark-theme {
+  background-color: #030712;
+  background-image: 
+    radial-gradient(ellipse 80% 50% at 50% -20%, rgba(16, 185, 129, 0.15), transparent),
+    radial-gradient(ellipse 60% 40% at 100% 100%, rgba(6, 182, 212, 0.12), transparent),
+    radial-gradient(ellipse 50% 30% at 0% 80%, rgba(99, 102, 241, 0.08), transparent);
+  color: #f8fafc;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+body.dark-theme .classy-glass-card {
+  background: linear-gradient(135deg, rgba(15, 23, 42, 0.8) 0%, rgba(3, 7, 18, 0.85) 100%);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 20px 50px -10px rgba(0, 0, 0, 0.7);
+}
+
+/* ==========================================================================
+   LIGHT THEME (Crisp Medical White, High-Contrast Slate & Vibrant Badges)
+   ========================================================================== */
+body.light-theme {
+  background-color: #f8fafc;
+  background-image: 
+    radial-gradient(ellipse 80% 50% at 50% -20%, rgba(16, 185, 129, 0.06), transparent),
+    radial-gradient(ellipse 60% 40% at 100% 100%, rgba(6, 182, 212, 0.06), transparent);
+  color: #0f172a;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* 1. Header & Navigation */
+body.light-theme header {
+  background-color: rgba(255, 255, 255, 0.96);
+  border-color: #cbd5e1;
+  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.04);
+}
+
+/* 2. Glass Cards & Main Containers */
+body.light-theme .classy-glass-card,
+body.light-theme .glass-card,
+body.light-theme .modal-card {
+  background: #ffffff;
+  border: 1px solid #cbd5e1;
+  box-shadow: 0 10px 25px -5px rgba(15, 23, 42, 0.06), 0 4px 6px -2px rgba(15, 23, 42, 0.03);
+  color: #0f172a;
+}
+
+/* 3. Form Inputs, Selects, and Textareas */
+body.light-theme input,
+body.light-theme select,
+body.light-theme textarea {
+  background-color: #ffffff;
+  color: #0f172a;
+  border-color: #cbd5e1;
+}
+
+body.light-theme input::placeholder,
+body.light-theme textarea::placeholder {
+  color: #64748b;
+}
+
+body.light-theme input:focus,
+body.light-theme select:focus,
+body.light-theme textarea:focus {
+  background-color: #ffffff;
+  border-color: #0d9488;
+  box-shadow: 0 0 0 2px rgba(13, 148, 136, 0.2);
+}
+
+/* 4. Table Hover & Dividers in Light Mode */
+body.light-theme tr:hover {
+  background-color: #f1f5f9;
+}
+
+/* 5. Modals Overlay in Light Mode */
+body.light-theme .bg-black\/60,
+body.light-theme .bg-black\/70,
+body.light-theme .bg-black\/80 {
+  background-color: rgba(15, 23, 42, 0.5);
+  backdrop-filter: blur(8px);
+}
+
+body.light-theme .text-gradient-emerald-cyan {
+  background: linear-gradient(135deg, #047857 0%, #0284c7 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+body.light-theme .text-gradient-platinum {
+  background: linear-gradient(135deg, #0f172a 0%, #334155 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+body.light-theme .glow-pill-emerald {
+  background: #ecfdf5;
+  color: #047857;
+  border: 1px solid #a7f3d0;
+  box-shadow: none;
+}
+
+body.light-theme .glow-pill-cyan {
+  background: #ecfeff;
+  color: #0284c7;
+  border: 1px solid #a5f3fc;
+  box-shadow: none;
+}
+
+/* ==========================================================================
+   CUSTOM SCROLLBAR
+   ========================================================================== */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 9999px;
+}
+body.dark-theme ::-webkit-scrollbar-thumb {
+  background: #1e293b;
+}

@@ -1,0 +1,31 @@
+=== PAGE 1 ===
+Centers for Disease Control and Prevention (CDC)
+Clinical Guidance for Management of Acute Bacterial Meningitis — 2026 Update
+Official Source URL: https://www.cdc.gov/meningitis/clinical-guidance.html
+Publisher: Centers for Disease Control and Prevention
+
+Section 1: Clinical Evaluation and Diagnostic Workup
+Clinical Presentation:
+The classic triad of acute bacterial meningitis comprises fever, nuchal rigidity (stiff neck), and altered mental status. Kernig's sign (pain on passive knee extension) and Brudzinski's sign (involuntary hip flexion on neck flexion) may be present.
+Immediate Diagnostic Evaluation:
+- Obtain blood cultures (2 sets) prior to initiating antimicrobial therapy.
+- Urgent Lumbar Puncture (LP) for Cerebrospinal Fluid (CSF) cell count, differential, protein, glucose, Gram stain, and bacterial PCR.
+- Non-contrast CT Head prior to LP is indicated only if focal neurological deficits, new-onset seizures, papilledema, or severely depressed GCS (< 10) are present.
+- Do NOT delay antibiotic administration for CT scan imaging.
+
+=== PAGE 2 ===
+Section 3: Empiric Antimicrobial and Adjunctive Corticosteroid Therapy
+Empiric Regimen for Adults (Age 18 - 50 years):
+- IV Ceftriaxone 2g every 12 hours PLUS IV Vancomycin 15-20 mg/kg every 8-12 hours (target trough 15-20 mcg/mL).
+Empiric Regimen for Adults > 50 years or Immunocompromised:
+- IV Ceftriaxone 2g Q12H PLUS IV Vancomycin 15-20 mg/kg Q8-12H PLUS IV Ampicillin 2g every 4 hours to cover Listeria monocytogenes.
+Adjunctive Corticosteroid Therapy:
+- Administer IV Dexamethasone 10mg immediately prior to or concurrently with the first dose of antimicrobial therapy. Continue Dexamethasone 10mg IV Q6H for 4 days if Streptococcus pneumoniae is confirmed.
+
+=== PAGE 3 ===
+Section 5: Droplet Precautions and Chemoprophylaxis
+Infection Control:
+- Implement Droplet Isolation Precautions immediately for suspected Neisseria meningitidis until 24 hours of effective antibiotic therapy have been completed.
+Post-Exposure Chemoprophylaxis for Close Contacts:
+- Indicated for household contacts or individuals directly exposed to oral secretions within 7 days prior to symptom onset.
+- Chemoprophylaxis options: Single dose oral Ciprofloxacin 500mg OR single dose IM Ceftriaxone 250mg OR Rifampin 600mg BD for 2 days.

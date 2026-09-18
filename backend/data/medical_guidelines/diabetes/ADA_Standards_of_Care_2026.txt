@@ -1,0 +1,35 @@
+=== PAGE 1 ===
+American Diabetes Association (ADA)
+Standards of Care in Diabetes — 2026
+Official Source URL: https://diabetesjournals.org/care/issue/49/Supplement_1
+Publisher: American Diabetes Association
+
+Section 2: Classification and Diagnosis of Diabetes
+Diagnostic Criteria for Diabetes Mellitus:
+1. Fasting Plasma Glucose (FPG) >= 126 mg/dL (7.0 mmol/L). Fasting is defined as no caloric intake for at least 8 hours.
+2. 2-Hour Plasma Glucose >= 200 mg/dL (11.1 mmol/L) during an Oral Glucose Tolerance Test (OGTT) using a 75g anhydrous glucose load.
+3. HbA1c >= 6.5% (48 mmol/mol) performed in a laboratory using a NGSP-certified method.
+4. In a patient with classic symptoms of hyperglycemia or hyperglycemic crisis, a random plasma glucose >= 200 mg/dL (11.1 mmol/L).
+
+=== PAGE 2 ===
+Section 6: Glycemic Goals and Hypoglycemia Management
+General HbA1c goal for non-pregnant adults is < 7.0% (53 mmol/mol) to reduce microvascular complications.
+Hypoglycemia Classification:
+- Level 1 Hypoglycemia: Glucose < 70 mg/dL (3.9 mmol/L) and >= 54 mg/dL (3.0 mmol/L).
+- Level 2 Hypoglycemia: Glucose < 54 mg/dL (3.0 mmol/L), threshold for neuroglycopenic symptoms.
+- Level 3 Hypoglycemia: Severe event characterized by altered mental state requiring assistance for recovery.
+Rule of 15 Treatment Protocol:
+Conscious patients with glucose < 70 mg/dL should ingest 15-20g of fast-acting glucose (e.g. 4 oz juice or 4 glucose tablets). Recheck blood glucose in 15 minutes. Repeat if glucose remains < 70 mg/dL.
+For Level 3 hypoglycemia with unconsciousness, administer IV Dextrose 50% (D50W) 50 mL IV push or Subcutaneous/IM Glucagon 1mg.
+
+=== PAGE 3 ===
+Section 15: Management of Hyperglycemic Crises (DKA and HHS)
+Diabetic Ketoacidosis (DKA) Criteria:
+- Blood glucose > 250 mg/dL, arterial pH < 7.30, serum bicarbonate < 18 mEq/L, anion gap > 12 mEq/L, and positive urine or serum ketones.
+Hyperosmolar Hyperglycemic State (HHS) Criteria:
+- Blood glucose > 600 mg/dL, arterial pH > 7.30, serum bicarbonate > 18 mEq/L, serum osmolality > 320 mOsm/kg.
+Resuscitation and Insulin Protocol:
+1. Fluid Resuscitation: Infuse 0.9% NaCl at 1000 mL/hr during the first hour.
+2. Insulin Infusion: Administer IV Regular Insulin bolus 0.1 units/kg followed by continuous infusion at 0.1 units/kg/hr.
+3. Potassium Monitoring: If serum K+ < 3.3 mEq/L, hold insulin and administer IV KCl until K+ > 3.3 mEq/L. Maintain serum K+ between 4.0 and 5.0 mEq/L.
+4. Resolution Criteria: DKA is resolved when blood glucose < 200 mg/dL, venous pH > 7.30, and serum bicarbonate >= 18 mEq/L.

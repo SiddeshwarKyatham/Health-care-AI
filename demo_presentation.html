@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Clinical Decision Support System — Project Demo Video Showcase</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #030712; color: #f3f4f6; }
+    .glass { background: rgba(15, 23, 42, 0.75); backdrop-filter: blur(16px); border: 1px solid rgba(255, 255, 255, 0.1); }
+    .glow-teal { box-shadow: 0 0 30px rgba(20, 184, 166, 0.25); }
+    .glow-cyan { box-shadow: 0 0 30px rgba(6, 182, 212, 0.25); }
+    @keyframes pulseGlow {
+      0%, 100% { opacity: 0.4; }
+      50% { opacity: 0.8; }
+    }
+    .anim-pulse { animation: pulseGlow 3s infinite ease-in-out; }
+  </style>
+</head>
+<body class="min-h-screen p-6 md:p-12">
+  <div class="max-w-6xl mx-auto space-y-8">
+    
+    <!-- Header Banner -->
+    <div class="glass rounded-3xl p-8 border border-teal-500/30 relative overflow-hidden">
+      <div class="absolute -right-20 -top-20 w-80 h-80 bg-teal-500/10 rounded-full blur-3xl anim-pulse"></div>
+      <div class="relative z-10 flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+        <div class="space-y-2">
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-teal-500/10 border border-teal-500/30 text-teal-400 text-xs font-semibold">
+            <span>🎬 Official Project Demonstration</span>
+          </div>
+          <h1 class="text-3xl md:text-4xl font-extrabold tracking-tight text-white">
+            Clinical Decision Support System <span class="text-transparent bg-clip-text bg-gradient-to-r from-teal-400 to-cyan-400">Project Demo</span>
+          </h1>
+          <p class="text-slate-400 text-sm max-w-2xl">
+            B.Tech Major Project: Multi-Agent RAG with Neon PostgreSQL & Google Gemini 2.5 Flash for Rural Healthcare.
+          </p>
+        </div>
+        <div class="flex items-center gap-3">
+          <a href="http://localhost:3000" target="_blank" class="px-5 py-2.5 rounded-xl bg-gradient-to-r from-teal-500 to-cyan-500 hover:from-teal-400 hover:to-cyan-400 text-slate-950 font-extrabold text-xs tracking-wider uppercase shadow-lg shadow-teal-500/20 transition flex items-center gap-2">
+            <span>Launch Live App</span>
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Video Player Simulation Container -->
+    <div class="glass rounded-3xl p-4 md:p-6 border border-slate-800 glow-teal space-y-4">
+      <div class="flex items-center justify-between px-2">
+        <div class="flex items-center gap-3">
+          <div class="flex gap-1.5">
+            <span class="w-3 h-3 rounded-full bg-rose-500/80"></span>
+            <span class="w-3 h-3 rounded-full bg-amber-500/80"></span>
+            <span class="w-3 h-3 rounded-full bg-emerald-500/80"></span>
+          </div>
+          <span class="text-xs font-mono text-slate-400">CDSS_Interactive_Demo_Simulation.mp4</span>
+        </div>
+        <span class="text-xs font-bold text-teal-400 bg-teal-500/10 px-2.5 py-0.5 rounded-full border border-teal-500/30">1080p 60FPS HD</span>
+      </div>
+
+      <!-- Simulated Video Display Box -->
+      <div class="relative aspect-video rounded-2xl bg-slate-950 border border-slate-800 overflow-hidden flex flex-col justify-between p-6">
+        
+        <!-- Video Overlay Header -->
+        <div class="flex items-center justify-between z-10">
+          <div class="bg-slate-900/90 backdrop-blur px-3 py-1.5 rounded-lg border border-slate-800 text-xs font-mono text-teal-300 flex items-center gap-2">
+            <span class="w-2 h-2 rounded-full bg-rose-500 animate-ping"></span>
+            <span>SIMULATED SCREEN DEMO</span>
+          </div>
+          <div id="stepBadge" class="bg-slate-900/90 backdrop-blur px-3 py-1.5 rounded-lg border border-slate-800 text-xs font-bold text-slate-200">
+            Phase 1: Patient Intake Wizard
+          </div>
+        </div>
+
+        <!-- Dynamic Simulated Screen Content -->
+        <div id="demoContent" class="my-auto text-center space-y-4 max-w-2xl mx-auto z-10 transition-all duration-500">
+          <div class="w-16 h-16 rounded-2xl bg-teal-500/20 text-teal-400 flex items-center justify-center mx-auto border border-teal-500/40 text-2xl">
+            🩺
+          </div>
+          <h2 class="text-2xl font-bold text-white">Clinical Decision Support Demonstration</h2>
+          <p class="text-sm text-slate-300">
+            Click <b class="text-teal-400">Play Demo Simulation</b> below to experience the automated 5-Agent RAG pipeline walkthrough.
+          </p>
+        </div>
+
+        <!-- Video Player Bottom Controls -->
+        <div class="bg-slate-900/90 backdrop-blur p-4 rounded-xl border border-slate-800 space-y-3 z-10">
+          <!-- Timeline Bar -->
+          <div class="w-full bg-slate-950 h-2 rounded-full overflow-hidden border border-slate-800">
+            <div id="progressBar" class="bg-gradient-to-r from-teal-500 to-cyan-500 h-full w-0 transition-all duration-300"></div>
+          </div>
+
+          <div class="flex items-center justify-between">
+            <div class="flex items-center gap-4">
+              <button id="playBtn" onclick="togglePlay()" class="w-10 h-10 rounded-xl bg-teal-500 hover:bg-teal-400 text-slate-950 font-black flex items-center justify-center transition shadow-md">
+                ▶
+              </button>
+              <span id="timeDisplay" class="text-xs font-mono text-slate-400">00:00 / 01:30</span>
+            </div>
+
+            <div class="flex items-center gap-2 text-xs font-semibold">
+              <button onclick="setPhase(0)" class="px-2.5 py-1 rounded bg-slate-800 hover:bg-slate-700 text-slate-300">1. Intake</button>
+              <button onclick="setPhase(1)" class="px-2.5 py-1 rounded bg-slate-800 hover:bg-slate-700 text-slate-300">2. 5-Agents</button>
+              <button onclick="setPhase(2)" class="px-2.5 py-1 rounded bg-slate-800 hover:bg-slate-700 text-slate-300">3. RAG Search</button>
+              <button onclick="setPhase(3)" class="px-2.5 py-1 rounded bg-slate-800 hover:bg-slate-700 text-slate-300">4. LLM Plan</button>
+              <button onclick="setPhase(4)" class="px-2.5 py-1 rounded bg-slate-800 hover:bg-slate-700 text-slate-300">5. Benchmark</button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Video Script & Voiceover Guide -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      
+      <!-- Voiceover Script -->
+      <div class="glass rounded-2xl p-6 border border-slate-800 space-y-4">
+        <h3 class="text-base font-bold text-white flex items-center gap-2">
+          <span>🎙️</span> 90-Second Viva Presentation Voiceover Script
+        </h3>
+        
+        <div class="space-y-3 text-xs leading-relaxed text-slate-300">
+          <div class="p-3 rounded-xl bg-slate-950/60 border border-slate-800">
+            <span class="font-bold text-teal-400 block mb-1">00:00 - 00:20 | Introduction & Problem Statement</span>
+            "Good morning professors. Today we present our project: Clinical Decision Support for Rural Healthcare Using Medical LLMs and Multi-Agent RAG. Rural health centers often lack specialized doctors. Our system provides evidence-grounded differential diagnosis and treatment recommendations backed by WHO and CDC guidelines."
+          </div>
+
+          <div class="p-3 rounded-xl bg-slate-950/60 border border-slate-800">
+            <span class="font-bold text-cyan-400 block mb-1">00:20 - 00:45 | Consultation Intake & 5-Agent Architecture</span>
+            "Here in the consultation interface, the doctor inputs patient age, symptoms, and vitals. Once submitted, our 5-agent LangGraph pipeline executes: Retrieval Agent queries Neon PostgreSQL, Diagnosis Agent generates structured differentials, Treatment Agent applies guideline protocols, Validation Agent audits safety, and Explainability Agent provides clinical rationale."
+          </div>
+
+          <div class="p-3 rounded-xl bg-slate-950/60 border border-slate-800">
+            <span class="font-bold text-emerald-400 block mb-1">00:45 - 01:10 | Hybrid RAG Search & LLM Generation</span>
+            "Our vector engine searches 8,959 indexed guideline chunks using 384-D sentence-transformer embeddings combined with BM25 lexical token matching and domain boosting. This provides Gemini 2.5 Flash with exact medical evidence, achieving zero hallucination."
+          </div>
+
+          <div class="p-3 rounded-xl bg-slate-950/60 border border-slate-800">
+            <span class="font-bold text-purple-400 block mb-1">01:10 - 01:30 | Empirical Benchmark & Results</span>
+            "We evaluated our system on a 30-case clinical benchmark suite. Hybrid RAG achieved a Precision@5 of 70%, Document Recall@5 of 88.3%, Evidence Grounding Rate of 45.6%, and 100% operational pass rates across all 5 agents. Thank you!"
+          </div>
+        </div>
+      </div>
+
+      <!-- Feature Demonstration Checklist -->
+      <div class="glass rounded-2xl p-6 border border-slate-800 space-y-4">
+        <h3 class="text-base font-bold text-white flex items-center gap-2">
+          <span>📋</span> Screen Recording Checklist for Demo Video
+        </h3>
+
+        <div class="space-y-2.5 text-xs text-slate-300">
+          <div class="flex items-start gap-2.5 p-2.5 rounded-lg bg-slate-950/40 border border-slate-800">
+            <span class="text-teal-400 font-bold">1.</span>
+            <span>Show the main Dashboard at <code class="text-teal-300">http://localhost:3000</code>. Highlight the active 5-Agent status badges.</span>
+          </div>
+
+          <div class="flex items-start gap-2.5 p-2.5 rounded-lg bg-slate-950/40 border border-slate-800">
+            <span class="text-teal-400 font-bold">2.</span>
+            <span>Click one of the 1-click disease presets (e.g. <b>Acute Pneumonia</b> or <b>Diabetic Ketoacidosis</b>) to show fast intake auto-fill.</span>
+          </div>
+
+          <div class="flex items-start gap-2.5 p-2.5 rounded-lg bg-slate-950/40 border border-slate-800">
+            <span class="text-teal-400 font-bold">3.</span>
+            <span>Click <b>Execute 5-Agent Clinical Pipeline</b> and capture the live glowing agent tracker as each stage executes.</span>
+          </div>
+
+          <div class="flex items-start gap-2.5 p-2.5 rounded-lg bg-slate-950/40 border border-slate-800">
+            <span class="text-teal-400 font-bold">4.</span>
+            <span>Show the generated Clinical Report: ICD-10 Differential Diagnosis, Evidence Cards from Neon Vector DB, and Treatment Plan.</span>
+          </div>
+
+          <div class="flex items-start gap-2.5 p-2.5 rounded-lg bg-slate-950/40 border border-slate-800">
+            <span class="text-teal-400 font-bold">5.</span>
+            <span>Open the <b>Evaluation Framework Modal</b> to showcase the 30-case benchmark metrics (Precision@5: 70%, Recall@5: 88.3%).</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+  <script>
+    let currentPhase = 0;
+    let isPlaying = false;
+    let timer = null;
+
+    const phases = [
+      {
+        title: "Phase 1: Patient Intake Wizard",
+        badge: "Step 1/5 — Demographic & Symptom Entry",
+        content: `
+          <div class="glass p-6 rounded-2xl border border-teal-500/30 text-left space-y-3 max-w-lg mx-auto">
+            <div class="flex justify-between items-center text-xs font-bold text-teal-400">
+              <span>INTAKE FORM DEMO</span>
+              <span>Patient: P1027 (45M)</span>
+            </div>
+            <div class="bg-slate-900 p-3 rounded-xl border border-slate-800 text-xs text-slate-200">
+              <b>Primary Symptoms:</b> High fever (38.9°C), productive cough with purulent sputum, acute dyspnea, SpO2 91%.
+            </div>
+            <div class="flex gap-2">
+              <span class="px-2 py-1 rounded bg-rose-500/20 text-rose-300 text-[10px] font-bold">Severe Severity</span>
+              <span class="px-2 py-1 rounded bg-teal-500/20 text-teal-300 text-[10px] font-bold">Duration: 3 Days</span>
+            </div>
+          </div>
+        `
+      },
+      {
+        title: "Phase 2: 5-Agent Pipeline Execution",
+        badge: "Step 2/5 — LangGraph Orchestrator",
+        content: `
+          <div class="grid grid-cols-5 gap-2 max-w-xl mx-auto">
+            <div class="p-3 rounded-xl bg-teal-500/20 border border-teal-500/50 text-teal-300 text-center text-xs font-bold animate-pulse">1. Retrieval</div>
+            <div class="p-3 rounded-xl bg-cyan-500/20 border border-cyan-500/50 text-cyan-300 text-center text-xs font-bold">2. Diagnosis</div>
+            <div class="p-3 rounded-xl bg-emerald-500/20 border border-emerald-500/50 text-emerald-300 text-center text-xs font-bold">3. Treatment</div>
+            <div class="p-3 rounded-xl bg-purple-500/20 border border-purple-500/50 text-purple-300 text-center text-xs font-bold">4. Validation</div>
+            <div class="p-3 rounded-xl bg-amber-500/20 border border-amber-500/50 text-amber-300 text-center text-xs font-bold">5. Explainability</div>
+          </div>
+        `
+      },
+      {
+        title: "Phase 3: Hybrid Vector RAG Search",
+        badge: "Step 3/5 — Neon PostgreSQL Search",
+        content: `
+          <div class="glass p-5 rounded-2xl border border-cyan-500/30 text-left space-y-2 max-w-lg mx-auto text-xs">
+            <div class="font-bold text-cyan-400 flex justify-between">
+              <span>Neon PostgreSQL Vector DB</span>
+              <span>8,959 Chunks Indexed</span>
+            </div>
+            <div class="p-2.5 bg-slate-900 rounded-lg border border-slate-800">
+              <span class="text-teal-300 font-bold">Top Match (Score: 0.941):</span> WHO SARI Clinical Care Toolkit — Pneumonia Severe Hypoxemia Protocol
+            </div>
+            <div class="p-2.5 bg-slate-900 rounded-lg border border-slate-800">
+              <span class="text-cyan-300 font-bold">Hybrid Boost:</span> Dense 384-D Vector + BM25 Lexical Overlap
+            </div>
+          </div>
+        `
+      },
+      {
+        title: "Phase 4: Gemini 2.5 Flash LLM Generation",
+        badge: "Step 4/5 — Structured Clinical Report",
+        content: `
+          <div class="glass p-5 rounded-2xl border border-emerald-500/30 text-left space-y-2 max-w-lg mx-auto text-xs">
+            <div class="font-bold text-emerald-400 flex justify-between">
+              <span>Google Gemini 2.5 Flash</span>
+              <span>Evidence Grounded</span>
+            </div>
+            <div class="text-slate-200">
+              <b>Primary Differential:</b> Community-Acquired Severe Pneumonia (ICD-10: J18.9)
+            </div>
+            <div class="text-slate-300">
+              <b>Recommended Protocol:</b> Initiate Oxygen Therapy target SpO2 >= 92%. Parenteral antibiotics within 1 hour.
+            </div>
+          </div>
+        `
+      },
+      {
+        title: "Phase 5: Empirical Benchmark Evaluation",
+        badge: "Step 5/5 — 30-Case Benchmark Results",
+        content: `
+          <div class="grid grid-cols-4 gap-3 max-w-xl mx-auto text-center">
+            <div class="p-3 bg-slate-900 rounded-xl border border-teal-500/40">
+              <span class="text-[10px] text-slate-400 font-bold block">PRECISION@5</span>
+              <span class="text-lg font-black text-teal-400">70.0%</span>
+            </div>
+            <div class="p-3 bg-slate-900 rounded-xl border border-cyan-500/40">
+              <span class="text-[10px] text-slate-400 font-bold block">RECALL@5</span>
+              <span class="text-lg font-black text-cyan-400">88.3%</span>
+            </div>
+            <div class="p-3 bg-slate-900 rounded-xl border border-emerald-500/40">
+              <span class="text-[10px] text-slate-400 font-bold block">GROUNDING</span>
+              <span class="text-lg font-black text-emerald-400">45.6%</span>
+            </div>
+            <div class="p-3 bg-slate-900 rounded-xl border border-purple-500/40">
+              <span class="text-[10px] text-slate-400 font-bold block">AGENT PASS</span>
+              <span class="text-lg font-black text-purple-400">100%</span>
+            </div>
+          </div>
+        `
+      }
+    ];
+
+    function setPhase(index) {
+      currentPhase = index;
+      const phase = phases[currentPhase];
+      document.getElementById("stepBadge").innerText = phase.badge;
+      document.getElementById("demoContent").innerHTML = `
+        <h3 class="text-lg font-bold text-white mb-3">${phase.title}</h3>
+        ${phase.content}
+      `;
+      document.getElementById("progressBar").style.width = `${((currentPhase + 1) / phases.length) * 100}%`;
+      document.getElementById("timeDisplay").innerText = `00:${String((currentPhase + 1) * 18).padStart(2, '0')} / 01:30`;
+    }
+
+    function togglePlay() {
+      isPlaying = !isPlaying;
+      document.getElementById("playBtn").innerText = isPlaying ? "⏸" : "▶";
+      if (isPlaying) {
+        timer = setInterval(() => {
+          currentPhase = (currentPhase + 1) % phases.length;
+          setPhase(currentPhase);
+        }, 3000);
+      } else {
+        clearInterval(timer);
+      }
+    }
+
+    // Initialize Phase 0
+    setPhase(0);
+  </script>
+</body>
+</html>

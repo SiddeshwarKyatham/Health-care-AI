@@ -1,0 +1,32 @@
+=== PAGE 1 ===
+European Society of Cardiology (ESC)
+Clinical Practice Guidelines for Acute and Chronic Heart Failure — 2026 Edition
+Official Source URL: https://www.escardio.org/Guidelines/Clinical-Practice-Guidelines/Acute-and-Chronic-Heart-Failure
+Publisher: European Society of Cardiology
+
+Section 1: Diagnosis of Acute Decompensated Heart Failure
+Acute heart failure (AHF) refers to rapid onset or worsening of symptoms and/or signs of heart failure requiring urgent evaluation and therapy.
+Key Diagnostic Features:
+- Symptoms: Dyspnea at rest or exertion, orthopnea, paroxysmal nocturnal dyspnea, fatigue.
+- Signs: Peripheral edema, elevated Jugular Venous Pressure (JVP), hepatojugular reflux, pulmonary rales/crackles on auscultation, third heart sound (S3 gallop).
+Laboratory Biomarkers:
+- NT-proBNP >= 300 pg/mL or BNP >= 100 pg/mL in non-acute setting.
+- In acute emergency setting, NT-proBNP >= 450 pg/mL (age < 55), >= 900 pg/mL (age 55-75), >= 1800 pg/mL (age > 75).
+
+=== PAGE 2 ===
+Section 4: Pharmacological Management of Acute Decompensated Heart Failure
+Loop Diuretics:
+- Intravenous Loop Diuretics (Furosemide 40-80 mg IV bolus) are the cornerstone of therapy for acute pulmonary congestion and fluid overload.
+- Double the oral home diuretic dose if patient was taking chronic oral loop diuretics.
+Vasodilator Therapy:
+- Intravenous Nitroglycerin infusion (start at 10-20 mcg/min, titrate up) for patients with acute heart failure and Systolic Blood Pressure (SBP) > 110 mmHg.
+- Avoid nitrates in patients with SBP < 90 mmHg or severe aortic stenosis.
+Inotropic Support:
+- Inotropic agents (Dobutamine 2.5-20 mcg/kg/min or Milrinone) are indicated in cardiogenic shock with severe hypotension (SBP < 90 mmHg) and signs of hypoperfusion (cold extremities, oliguria, elevated serum lactate).
+
+=== PAGE 3 ===
+Section 7: Non-Invasive Ventilation and Advanced Mechanical Support
+Non-Invasive Positive Pressure Ventilation (NIPPV / CPAP / BiPAP):
+- Indicated in cardiogenic pulmonary edema with tachypnea (respiratory rate > 25 breaths/min) and hypoxemia (SpO2 < 90%) to reduce respiratory distress and intubation rate.
+- Start CPAP at 5-10 cm H2O or BiPAP at IPAP 10 cm H2O / EPAP 4 cm H2O.
+- Monitor for hypotension secondary to decreased venous return.

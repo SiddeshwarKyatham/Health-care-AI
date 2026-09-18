@@ -1,0 +1,35 @@
+=== PAGE 1 ===
+World Health Organization Clinical Guidelines
+Severe Acute Respiratory Infection (SARI) & Pneumonia Clinical Care Toolkit
+Publication Reference: WHO/2024/SARI/v1.0
+Official URL: https://www.who.int/publications/i/item/9789240010604
+
+Section 1: Screening, Triage, and Initial Recognition
+Patients presenting with severe respiratory symptoms require immediate triage. Severe acute respiratory infection (SARI) is defined as an acute respiratory infection with history of fever or measured fever >= 38.0 C and cough, with onset within the last 10 days, requiring hospitalization.
+Clinical parameters to assess at triage include respiratory rate, work of breathing, arterial oxygen saturation (SpO2), heart rate, and blood pressure.
+For adults, tachypnea (respiratory rate >= 30 breaths/min) or severe respiratory distress indicates severe pneumonia and warrants immediate oxygen supplementation.
+
+=== PAGE 2 ===
+Section 2: Oxygen Therapy and Hypoxemia Management
+Hypoxemia is defined as SpO2 < 90% in non-pregnant adults and SpO2 < 92-95% in pregnant patients.
+Initiate nasal cannula oxygen therapy at 1-5 L/min for mild hypoxemia. For severe hypoxemia (SpO2 < 88% or severe respiratory distress), utilize a non-rebreather reservoir mask at 10-15 L/min.
+Target SpO2 is >= 94% during resuscitation in non-COPD patients. In patients with chronic hypercapnic respiratory failure (e.g. COPD), target SpO2 is 88-92% to avoid hypercapnic narcosis.
+Monitor capillary blood gases or arterial blood gases (ABG) when available.
+
+=== PAGE 3 ===
+Section 3: Antimicrobial Therapy for Community-Acquired Pneumonia
+Empiric antimicrobial therapy should be administered within 1 hour of initial patient evaluation for severe pneumonia or sepsis.
+Mild to Moderate CAP (Outpatient / General Ward):
+- Oral Amoxicillin/Clavulanate 1g twice daily OR oral Azithromycin 500mg daily.
+Severe CAP (ICU / High Dependency Unit):
+- Intravenous Ceftriaxone 2g once daily PLUS Intravenous Azithromycin 500mg once daily.
+- If Pseudomonas infection is suspected, substitute Ceftriaxone with Piperacillin-Tazobactam 4.5g IV Q6H or Cefepime 2g IV Q8H.
+- Adjust renal dosing in patients with eGFR < 30 mL/min/1.73m2.
+
+=== PAGE 4 ===
+Section 4: Sepsis Recognition and Resuscitation in SARI
+Septic shock secondary to severe pulmonary infection is characterized by persistent hypotension requiring vasopressors to maintain Mean Arterial Pressure (MAP) >= 65 mmHg and serum lactate > 2 mmol/L despite fluid resuscitation.
+Resuscitation protocol:
+- Administer 30 mL/kg isotonic crystalloid (Ringer's Lactate or 0.9% Normal Saline) within the first 3 hours.
+- Initiate Norepinephrine infusion as the first-choice vasopressor if MAP remains < 65 mmHg following fluid loading.
+- Avoid fluid overload in acute respiratory distress syndrome (ARDS); transition to conservative fluid management once hemodynamic stability is achieved.
