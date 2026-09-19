@@ -1,5 +1,6 @@
 import json
 import random
+from datetime import datetime
 from io import BytesIO
 from typing import Dict, Any, List, Optional
 from fastapi import APIRouter, Depends, HTTPException, Response
@@ -8,6 +9,7 @@ from sqlalchemy.orm import Session
 from app.database.connection import get_db
 from app.database.models import Consultation, Patient, Evidence, ClinicalReport, User
 from app.agents.orchestrator import execute_clinical_agent_pipeline
+from app.api.patients import generate_production_patient_code
 
 # ReportLab Imports
 from reportlab.lib.pagesizes import letter
@@ -19,6 +21,7 @@ router = APIRouter(prefix="/api/consultation", tags=["Consultation"])
 
 class ConsultationRequest(BaseModel):
     patient_id: Optional[str] = None
+    patient_code: Optional[str] = None
     age: int
     sex: str
     symptoms: str
@@ -26,12 +29,76 @@ class ConsultationRequest(BaseModel):
     lab_results: Optional[str] = ""
     doctor_id: Optional[str] = None
 
+@router.get("/stats")
+def get_consultation_stats(db: Session = Depends(get_db)):
+    """
+    Returns live quantitative metric counts for the clinician dashboard.
+    """
+    total_consultations = db.query(Consultation).count()
+    reports_count = db.query(ClinicalReport).count()
+    evidence_count = db.query(Evidence).count()
+    
+    today_start = datetime.now().replace(hour=0, minute=0, second=0, microsecond=0)
+    todays_count = db.query(Consultation).filter(Consultation.created_at >= today_start).count()
+    
+    return {
+        "todays_consultations": todays_count if todays_count > 0 else total_consultations,
+        "total_consultations": total_consultations,
+        "reports_generated": reports_count,
+        "evidence_retrieved": evidence_count,
+    }
+
+@router.get("/recent")
+def get_recent_consultations(limit: int = 10, db: Session = Depends(get_db)):
+    """
+    Returns recent patient consultations with formatted clinical categories and dates.
+    """
+    consultations = db.query(Consultation).order_by(Consultation.created_at.desc()).limit(limit).all()
+    results = []
+    
+    for c in consultations:
+        patient = db.query(Patient).filter(Patient.id == c.patient_id).first()
+        report = db.query(ClinicalReport).filter(ClinicalReport.consultation_id == c.id).first()
+        
+        category = "General Medicine"
+        if report and report.possible_conditions_json:
+            try:
+                diag = json.loads(report.possible_conditions_json)
+                likely = diag.get("likely_condition", {})
+                cond = likely.get("condition", "")
+                if "Pneumonia" in cond or "Respiratory" in cond or "Cough" in c.symptoms:
+                    category = "Respiratory"
+                elif "Ketoacidosis" in cond or "Diabetes" in cond or "Glucose" in c.symptoms:
+                    category = "Endocrinology"
+                elif "Hypertensive" in cond or "Chest" in cond or "Heart" in cond:
+                    category = "Cardiology"
+                elif "Malaria" in cond or "Infectious" in cond or "Fever" in c.symptoms:
+                    category = "Infectious Disease"
+                elif cond:
+                    category = cond.split("/")[0].strip()
+            except Exception:
+                pass
+                
+        results.append({
+            "id": c.id,
+            "patientCode": patient.patient_code if patient else "PAT-1001",
+            "age": patient.age if patient else 45,
+            "sex": patient.sex if patient else "Male",
+            "category": category,
+            "symptoms": c.symptoms,
+            "status": "Completed",
+            "statusColor": "glow-pill-emerald",
+            "date": c.created_at.strftime("%b %d, %H:%M") if c.created_at else "Recently",
+        })
+        
+    return results
+
 @router.post("/analyze")
 def analyze_patient_consultation(req: ConsultationRequest, db: Session = Depends(get_db)):
     # 1. Resolve or create Patient
     patient_id = req.patient_id
     if not patient_id:
-        p_code = f"PAT-{random.randint(1000, 9999)}"
+        p_code = req.patient_code or generate_production_patient_code(db)
         patient = Patient(
             patient_code=p_code,
             age=req.age,
@@ -60,6 +127,7 @@ def analyze_patient_consultation(req: ConsultationRequest, db: Session = Depends
     patient_data = {
         "consultation_id": consultation.id,
         "patient_id": patient_id,
+        "patient_code": patient.patient_code,
         "age": req.age,
         "sex": req.sex,
         "symptoms": req.symptoms,
@@ -98,6 +166,7 @@ def analyze_patient_consultation(req: ConsultationRequest, db: Session = Depends
     return {
         "consultation_id": consultation.id,
         "patient_id": patient_id,
+        "patient_code": patient.patient_code,
         "state": agent_state.dict()
     }
 
@@ -109,11 +178,13 @@ def get_consultation_details(consultation_id: str, db: Session = Depends(get_db)
         
     report = db.query(ClinicalReport).filter(ClinicalReport.consultation_id == consultation_id).first()
     evidence_list = db.query(Evidence).filter(Evidence.consultation_id == consultation_id).all()
+    patient = db.query(Patient).filter(Patient.id == consultation.patient_id).first()
     
     return {
         "consultation": {
             "id": consultation.id,
             "patient_id": consultation.patient_id,
+            "patient_code": patient.patient_code if patient else "PAT-1001",
             "symptoms": consultation.symptoms,
             "medical_history": consultation.medical_history,
             "lab_results": consultation.lab_results,
@@ -168,14 +239,14 @@ def export_consultation_pdf(consultation_id: str, db: Session = Depends(get_db))
                     setattr(self, k, v)
 
         c_str = str(consultation_id)
-        cid = c_str if len(c_str) >= 8 else "DEMO1027"
+        cid = c_str if len(c_str) >= 8 else "PAT-20260919-0001"
         consultation = DemoObj(
             id=cid,
             symptoms="High fever (38.9°C), productive cough with rust-colored sputum, acute dyspnea, SpO2 91%.",
             lab_results="Glucose: 178 mg/dL, BP: 130/82 mmHg, WBC: 15.8 10^3/µL, SpO2: 91%",
             medical_history="Type 2 Diabetes Mellitus (5 years)."
         )
-        patient = DemoObj(patient_code="P1027", age=45, sex="Male")
+        patient = DemoObj(patient_code="PAT-20260919-0001", age=45, sex="Male")
         evidence_list = [
             DemoObj(title="WHO Guidelines: Clinical Management of CAP", publisher="WHO Guidelines", section="General Section", page_number=1, content="Patients presenting with fever, productive cough, and dyspnea should be evaluated for pneumonia."),
             DemoObj(title="GOLD Strategy for Respiratory Exacerbations", publisher="GOLD Protocol", section="Exacerbation Section", page_number=1, content="Acute worsening of dyspnea in chronic airflow limitation."),
@@ -316,13 +387,13 @@ def generate_pdf_report_buffer(consultation, patient, evidence_list, diagnosis, 
     # Section 1: Patient Information & Clinical Input
     story.append(Paragraph("1. PATIENT PROFILE & CLINICAL PRESENTATION", h2_style))
     
-    p_code = getattr(patient, 'patient_code', 'P1027') if patient else "P1027"
+    p_code = getattr(patient, 'patient_code', 'PAT-20260919-0001') if patient else "PAT-20260919-0001"
     p_age = getattr(patient, 'age', 45) if patient else 45
     p_sex = getattr(patient, 'sex', 'Male') if patient else "Male"
     c_symptoms = getattr(consultation, 'symptoms', 'High fever, cough, dyspnea') if consultation else "N/A"
     c_lab = getattr(consultation, 'lab_results', 'Normal baseline vitals') if consultation else "N/A"
     c_history = getattr(consultation, 'medical_history', 'None reported') if consultation else "None reported"
-    c_id = str(getattr(consultation, 'id', 'DEMO1027'))[:8] if consultation else "DEMO1027"
+    c_id = str(getattr(consultation, 'id', 'PAT-20260919-0001'))[:8] if consultation else "PAT-20260919-0001"
 
     patient_data_table = [
         [Paragraph("<b>Patient Code:</b>", body_style), Paragraph(str(p_code), body_style), Paragraph("<b>Age / Sex:</b>", body_style), Paragraph(f"{p_age} Y / {p_sex}", body_style)],

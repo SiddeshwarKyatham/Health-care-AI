@@ -1,4 +1,5 @@
 import random
+from datetime import datetime
 from typing import List, Optional
 from fastapi import APIRouter, Depends, HTTPException
 from pydantic import BaseModel
@@ -7,6 +8,11 @@ from app.database.connection import get_db
 from app.database.models import Patient
 
 router = APIRouter(prefix="/api/patients", tags=["Patients"])
+
+def generate_production_patient_code(db: Session) -> str:
+    today_prefix = datetime.now().strftime("%Y%m%d")
+    count = db.query(Patient).count() + 1
+    return f"PAT-{today_prefix}-{count:04d}"
 
 class PatientCreate(BaseModel):
     patient_code: Optional[str] = None
@@ -28,9 +34,13 @@ class PatientResponse(BaseModel):
 def list_patients(db: Session = Depends(get_db)):
     return db.query(Patient).all()
 
+@router.get("/next-code")
+def get_next_patient_code(db: Session = Depends(get_db)):
+    return {"patient_code": generate_production_patient_code(db)}
+
 @router.post("", response_model=PatientResponse)
 def create_patient(data: PatientCreate, db: Session = Depends(get_db)):
-    code = data.patient_code or f"PAT-{random.randint(1000, 9999)}"
+    code = data.patient_code or generate_production_patient_code(db)
     patient = Patient(
         patient_code=code,
         age=data.age,
