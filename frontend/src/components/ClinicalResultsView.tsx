@@ -167,7 +167,7 @@ export default function ClinicalResultsView({ state, onNewConsultation }: Clinic
               </span>
             </div>
             <p className="text-xs text-slate-400 light-theme:text-slate-600 mt-0.5 font-medium">
-              Patient #{patient.consultation_id ? patient.consultation_id.slice(0, 8) : "P1027"} • {patient.age || 45}Y / {patient.sex || "Male"} • Dr. Pavan
+              Patient #{patient.consultation_id ? patient.consultation_id.slice(0, 8) : "Active Case"} • {patient.age || 45}Y / {patient.sex || "Male"} • {patient.doctor_name || state.doctor_name || "Attending Physician"}
             </p>
           </div>
         </div>

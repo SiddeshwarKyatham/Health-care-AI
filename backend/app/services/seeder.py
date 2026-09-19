@@ -41,16 +41,3 @@ def seed_knowledge_base_if_empty(db: Session):
                 ingested_count += 1
                 
         print(f"Successfully seeded {ingested_count} official medical guideline documents across domain subdirectories.")
-
-    # Seed demo doctor user if absent
-    existing_user = db.query(User).filter(User.email == "pavan@hospital.org").first()
-    if not existing_user:
-        from app.api.auth import hash_password
-        doc_user = User(
-            name="Dr. Pavan",
-            email="pavan@hospital.org",
-            password_hash=hash_password("demo123"),
-            role="Rural Health Specialist"
-        )
-        db.add(doc_user)
-        db.commit()

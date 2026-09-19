@@ -32,10 +32,10 @@ export default function Home() {
         const u = JSON.parse(storedUser);
         setUser({ ...u, token: storedToken });
       } catch {
-        setUser({ name: "Dr. Pavan", role: "Rural Health Specialist", email: "pavan@hospital.org", token: storedToken });
+        setUser(null);
       }
     } else {
-      setUser({ name: "Dr. Pavan", role: "Rural Health Specialist", email: "pavan@hospital.org", token: "demo123" });
+      setUser(null);
     }
   }, []);
 
@@ -131,6 +131,7 @@ export default function Home() {
       <main className="flex-1 max-w-7xl w-full mx-auto p-4 sm:p-6 md:p-8">
         {activeTab === "dashboard" && (
           <DoctorDashboardView
+            user={user}
             onNewConsultation={() => {
               setPresetCaseId(null);
               setActiveTab("new_consultation");

@@ -4,12 +4,14 @@ import React from "react";
 import { Activity, Plus, FileText, Database, CheckCircle2, AlertTriangle, ArrowRight, Stethoscope, Sparkles } from "lucide-react";
 
 interface DoctorDashboardViewProps {
+  user?: { name: string; role: string; email: string } | null;
   onNewConsultation: () => void;
   onSelectConsultation: (id: string) => void;
   onPresetSelect: (presetId: string) => void;
 }
 
 export default function DoctorDashboardView({
+  user,
   onNewConsultation,
   onSelectConsultation,
   onPresetSelect,
@@ -71,7 +73,7 @@ export default function DoctorDashboardView({
             <h2 className="text-2xl font-black text-slate-100 light-theme:text-slate-900 tracking-tight">Clinical Decision Support Hub</h2>
           </div>
           <p className="text-xs text-slate-300 light-theme:text-slate-600 font-medium">
-            Welcome back, <span className="text-gradient-emerald-cyan font-bold">Dr. Pavan</span>. System active with 20+ clinical guidelines & 5 autonomous agents.
+            Welcome back, <span className="text-gradient-emerald-cyan font-bold">{user?.name || "Physician"}</span>. System active with 20+ clinical guidelines & 5 autonomous agents.
           </p>
         </div>
 

@@ -85,18 +85,6 @@ def register(data: RegisterRequest, db: Session = Depends(get_db)):
 @router.post("/login", response_model=LoginResponse)
 def login(data: LoginRequest, db: Session = Depends(get_db)):
     user = db.query(User).filter(User.email == data.email).first()
-    
-    # Auto-create default demo user if email is pavan@hospital.org and not present
-    if not user and data.email == "pavan@hospital.org":
-        user = User(
-            name="Dr. Pavan",
-            email="pavan@hospital.org",
-            password_hash=hash_password("demo123"),
-            role="Rural Health Specialist"
-        )
-        db.add(user)
-        db.commit()
-        db.refresh(user)
 
     if not user or not verify_password(data.password, user.password_hash):
         raise HTTPException(

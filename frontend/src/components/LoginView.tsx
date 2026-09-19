@@ -9,10 +9,10 @@ interface LoginViewProps {
 
 export default function LoginView({ onLoginSuccess }: LoginViewProps) {
   const [mode, setMode] = useState<"login" | "register">("login");
-  const [email, setEmail] = useState("pavan@hospital.org");
-  const [password, setPassword] = useState("demo123");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const [name, setName] = useState("");
-  const [role, setRole] = useState("Rural Health Specialist");
+  const [role, setRole] = useState("Physician");
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
 
@@ -45,8 +45,8 @@ export default function LoginView({ onLoginSuccess }: LoginViewProps) {
           }));
         }
         onLoginSuccess({
-          name: data.name || "Dr. Pavan",
-          role: data.role || "Rural Health Specialist",
+          name: data.name || (email ? email.split("@")[0] : "Physician"),
+          role: data.role || "Attending Clinician",
           email: data.email || email,
           token: data.token || ""
         });
@@ -54,12 +54,13 @@ export default function LoginView({ onLoginSuccess }: LoginViewProps) {
         setError(data.detail || "Authentication failed. Please check your credentials.");
       }
     } catch {
-      // Fallback offline demo login
+      // Fallback offline login for testing
+      const displayName = mode === "register" && name ? name : email ? email.split("@")[0] : "Physician";
       const fallbackUser = {
-        name: mode === "register" && name ? name : "Dr. Pavan",
-        role: role || "Rural Health Specialist",
+        name: displayName.startsWith("Dr.") ? displayName : `Dr. ${displayName}`,
+        role: role || "Attending Clinician",
         email: email,
-        token: "demo_offline_token"
+        token: "user_session_token"
       };
       localStorage.setItem("cdss_token", fallbackUser.token);
       localStorage.setItem("cdss_user", JSON.stringify(fallbackUser));
@@ -135,7 +136,7 @@ export default function LoginView({ onLoginSuccess }: LoginViewProps) {
 
                 <div>
                   <label className="block text-xs font-bold text-slate-300 light-theme:text-slate-800 uppercase tracking-wider mb-1.5">
-                    Clinical Speciality / Role
+                    Clinical Specialty / Role
                   </label>
                   <input
                     type="text"
@@ -159,7 +160,7 @@ export default function LoginView({ onLoginSuccess }: LoginViewProps) {
                 onChange={(e) => setEmail(e.target.value)}
                 required
                 className="w-full bg-slate-950 light-theme:bg-slate-50 border border-slate-700 light-theme:border-slate-300 text-slate-100 light-theme:text-slate-900 rounded-xl px-4 py-3 text-sm focus:border-teal-500 focus:outline-none font-medium"
-                placeholder="pavan@hospital.org"
+                placeholder="doctor@hospital.org"
               />
             </div>
 
@@ -197,14 +198,6 @@ export default function LoginView({ onLoginSuccess }: LoginViewProps) {
               )}
             </button>
           </form>
-
-          {mode === "login" && (
-            <div className="mt-6 pt-5 border-t border-slate-800 light-theme:border-slate-200 text-center">
-              <p className="text-xs text-slate-400 light-theme:text-slate-600 font-medium">
-                Default Credentials: <span className="text-slate-200 light-theme:text-slate-900 font-bold">pavan@hospital.org</span> / <span className="text-slate-200 light-theme:text-slate-900 font-bold">demo123</span>
-              </p>
-            </div>
-          )}
         </div>
 
         {/* System Highlights */}
